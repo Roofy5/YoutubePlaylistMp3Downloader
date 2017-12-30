@@ -6,9 +6,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YoutubePlaylistMp3Downloader.Model.HtmlDownloaders
+namespace Library.HtmlDownloaders
 {
-    class ContentDownloader
+    public class ContentDownloader
     {
         public static async Task<byte[]> DownloadContent(string url)
         {

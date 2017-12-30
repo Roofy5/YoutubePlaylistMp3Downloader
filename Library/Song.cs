@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YoutubePlaylistMp3Downloader.Model
+namespace Library
 {
-    class Song
+    public class Song
     {
         public string Title { get; set; }
         public TimeSpan Duration { get; set; }

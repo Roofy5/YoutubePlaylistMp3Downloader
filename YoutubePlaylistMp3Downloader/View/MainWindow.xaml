@@ -12,6 +12,16 @@
         <vm:MainWindowVM />
     </Window.DataContext>
 
+    <Window.Resources>
+        <Style TargetType="{x:Type ListViewItem}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsDownloaded}" Value="True">
+                    <Setter Property="Background" Value="#FF2EFF00" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -39,6 +49,15 @@
                   ItemsSource="{Binding Songs}">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
+
+                    <GridViewColumn Header="Download?" Width="75">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding ToDownload}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
                     <GridViewColumn Header="Image" Width="100">
                         <GridViewColumn.HeaderContainerStyle>
                             <Style TargetType="GridViewColumnHeader">

@@ -5,9 +5,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace YoutubePlaylistMp3Downloader.Model.Parsers
+namespace Library.Parsers
 {
-    class YoutubeParser : IParser
+    public class YoutubeParser : IParser
     {
         private const string TitlePattern = "data-title=\"(.*?)\"";
         private const string ImagePattern = "data-thumb=\"(.*?)\"";

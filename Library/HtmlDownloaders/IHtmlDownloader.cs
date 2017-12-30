@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YoutubePlaylistMp3Downloader.Model.HtmlDownloaders
+namespace Library.HtmlDownloaders
 {
-    interface IHtmlDownloader
+    public interface IHtmlDownloader
     {
         string Url { get; set; }
         Task<string> DownloadContent();

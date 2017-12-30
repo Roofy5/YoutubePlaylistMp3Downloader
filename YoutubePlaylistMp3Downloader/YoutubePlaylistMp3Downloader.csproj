@@ -60,12 +60,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\RelayCommand.cs" />
-    <Compile Include="Model\HtmlDownloaders\ContentDownloader.cs" />
-    <Compile Include="Model\HtmlDownloaders\IHtmlDownloader.cs" />
-    <Compile Include="Model\HtmlDownloaders\YoutubeHtmlDownloader.cs" />
-    <Compile Include="Model\Parsers\IParser.cs" />
-    <Compile Include="Model\Parsers\YoutubeParser.cs" />
-    <Compile Include="Model\Song.cs" />
+    <Compile Include="Model\SongItem.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
@@ -99,14 +94,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Downloaders\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="View\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{3cf117e4-352b-46d6-b052-8c0f55c51411}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

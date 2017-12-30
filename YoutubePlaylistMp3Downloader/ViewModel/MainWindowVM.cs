@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using YoutubePlaylistMp3Downloader.Helpers;
 using YoutubePlaylistMp3Downloader.Model;
-using YoutubePlaylistMp3Downloader.Model.HtmlDownloaders;
-using YoutubePlaylistMp3Downloader.Model.Parsers;
+using Library;
+using Library.Parsers;
+using Library.HtmlDownloaders;
 
 namespace YoutubePlaylistMp3Downloader.ViewModel
 {
@@ -16,7 +17,7 @@ namespace YoutubePlaylistMp3Downloader.ViewModel
     {
         #region Private Fields
         private string url;
-        private ObservableCollection<Song> songs;
+        private ObservableCollection<SongItem> songs;
         #endregion
 
         #region Public Fields
@@ -25,7 +26,7 @@ namespace YoutubePlaylistMp3Downloader.ViewModel
             get { return url; }
             set { url = value; OnChange("Url"); }
         }
-        public ObservableCollection<Song> Songs
+        public ObservableCollection<SongItem> Songs
         {
             get { return songs; }
             set { songs = value; OnChange("Songs"); }
@@ -41,7 +42,7 @@ namespace YoutubePlaylistMp3Downloader.ViewModel
         {
             NewUrlButtonClick = new RelayCommand(DownloadContentFromUrl);
             Url = "https://www.youtube.com/playlist?list=PLf4wgrxbZhM_YlnAnD-c786qMwiwnbYY5";
-            Songs = new ObservableCollection<Song>();
+            Songs = new ObservableCollection<SongItem>();
         }
 
         private async void DownloadContentFromUrl(object parameter)
@@ -57,7 +58,9 @@ namespace YoutubePlaylistMp3Downloader.ViewModel
                 try
                 {
                     song.Image = await ContentDownloader.DownloadContent(song.ImageUrl);
-                    Songs.Add(song);
+                    Songs.Add(new SongItem(song));
+                    Mp3JuiceHtmlDownloader downloader2 = new Mp3JuiceHtmlDownloader(song);
+                    string mp3Site = await downloader2.DownloadContent();
                 }
                 catch (Exception exc) { }
             }

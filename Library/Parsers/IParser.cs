@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YoutubePlaylistMp3Downloader.Model.Parsers
+namespace Library.Parsers
 {
-    interface IParser
+    public interface IParser
     {
         string Text { get; set; }
         List<Song> Parse();
